@@ -2,8 +2,8 @@
 
 require_once __DIR__ . "/Model/movie.php";
 
-$parasite= new Movie('Parasite','2019','Bong Joon-ho','drama','korean');
-$worst= new Movie('The worst person in the world','2021','Joachim Trier','drama','norvegian');
+$parasite= new Movie('Parasite','2019','Bong Joon-ho',['drama','thriller','comedy'],'korean');
+$worst= new Movie('The worst person in the world','2021','Joachim Trier',['drama','romance','comedy'],'norvegian');
 
 ?>
 
@@ -20,8 +20,23 @@ $worst= new Movie('The worst person in the world','2021','Joachim Trier','drama'
     <h2 class="text-center">Movie List</h2>
     <div class="row">
       <ul>
-        <li><?php echo $parasite->GetInfo()?></li>
-        <li><?php echo $worst->GetInfo()?></li>
+        <li><?php echo $parasite->GetInfo()?>
+          <ul>Genres:
+            <?php foreach ($parasite->genres as $genre): ?>
+            <li>
+              <?php echo $genre?>
+            </li>
+            <?php endforeach?>
+          </ul>
+        </li>
+        <li><?php echo $worst->GetInfo()?>
+        <ul>
+          Genres:
+          <?php foreach($worst->genres as $genre): ?>
+          <li><?php echo $genre ?></li>
+          <?php endforeach?>
+        </ul>
+        </li>
         
       </ul>   
     </div>
